@@ -1,12 +1,10 @@
 """
 Configuration Module
-
 Contains application settings and configuration options.
 """
-
 import os
 from pathlib import Path
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from dotenv import load_dotenv
 
 # Load environment variables from .env file if it exists
@@ -17,6 +15,13 @@ class Settings(BaseSettings):
     Application settings class using Pydantic.
     Environment variables override these defaults.
     """
+    
+    # Model configuration for Pydantic v2
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore"
+    )
     
     # Application info
     APP_NAME: str = "AI Web Crawler"
@@ -41,28 +46,28 @@ class Settings(BaseSettings):
     DEFAULT_WORD_COUNT_THRESHOLD: int = 10
     
     # SharePoint/AD integration
-    SHAREPOINT_USERNAME: str = os.getenv("SHAREPOINT_USERNAME", "")
-    SHAREPOINT_PASSWORD: str = os.getenv("SHAREPOINT_PASSWORD", "")
+    SHAREPOINT_USERNAME: str = ""
+    SHAREPOINT_PASSWORD: str = ""
     
     # Storage settings
     STORE_IMAGES: bool = True
     MAX_IMAGE_SIZE_MB: int = 10
     
     # Vector database settings
-    USE_EMBEDDINGS: bool = os.getenv("USE_EMBEDDINGS", "True").lower() in ("true", "1", "t")
-    USE_LOCAL_EMBEDDINGS: bool = os.getenv("USE_LOCAL_EMBEDDINGS", "True").lower() in ("true", "1", "t")
-    EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+    USE_EMBEDDINGS: bool = True
+    USE_LOCAL_EMBEDDINGS: bool = True
+    EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"
     
     # Ollama settings
-    OLLAMA_HOST: str = os.getenv("OLLAMA_HOST", "http://localhost:11434")
-    DEFAULT_OLLAMA_MODEL: str = os.getenv("DEFAULT_OLLAMA_MODEL", "llama3")
+    OLLAMA_HOST: str = "http://localhost:11434"
+    DEFAULT_OLLAMA_MODEL: str = "llama3"
     
     # OpenAI (for embeddings if selected)
-    OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
+    OPENAI_API_KEY: str = ""
     
     # Performance settings
     MAX_CONTEXT_LENGTH: int = 10000  # Max number of characters to send to LLM
-    
+
     def __init__(self, **data):
         super().__init__(**data)
         
