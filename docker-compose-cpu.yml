@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  ai-web-crawler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-web-crawler
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - ai-network
+    environment:
+      - DEBUG=False
+      - USE_EMBEDDINGS=True
+      - USE_LOCAL_EMBEDDINGS=True
+      - EMBEDDING_MODEL=all-MiniLM-L6-v2
+      - OLLAMA_HOST=http://ollama:11434
+      - DEFAULT_OLLAMA_MODEL=llama3
+    depends_on:
+      - ollama
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama-data:/root/.ollama
+    networks:
+      - ai-network
+    # No GPU configuration for CPU-only environments
+
+networks:
+  ai-network:
+    driver: bridge

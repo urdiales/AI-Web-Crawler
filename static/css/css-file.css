@@ -1,0 +1,202 @@
+/* Custom CSS for the AI Web Crawler app */
+
+/* Main container styling */
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Header styling */
+h1, h2, h3 {
+    color: #1E90FF;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-top: 1.2rem;
+}
+
+/* Form styling */
+.stForm {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.stForm [data-baseweb="input"] {
+    border-radius: 5px;
+}
+
+.stForm [data-baseweb="button"] {
+    background-color: #1E90FF;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+/* Sidebar styling */
+.sidebar .sidebar-content {
+    background-color: #f8f9fa;
+}
+
+/* Chat styling */
+.chat-message {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-message {
+    background-color: #E6F3FF;
+    border-left: 4px solid #1E90FF;
+}
+
+.assistant-message {
+    background-color: #F8F9FA;
+    border-left: 4px solid #34A853;
+}
+
+/* Expander styling */
+.streamlit-expanderHeader {
+    font-weight: 600;
+    color: #1E90FF;
+}
+
+/* Progress bar styling */
+.stProgress > div > div {
+    background-color: #1E90FF;
+}
+
+/* Status text styling */
+.status-text {
+    font-style: italic;
+    color: #555;
+}
+
+/* DataFrame styling */
+.dataframe {
+    font-size: 0.9rem;
+}
+
+/* File uploader styling */
+[data-testid="stFileUploader"] {
+    width: 100%;
+}
+
+/* Button styling */
+.stButton button {
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+/* Success messages */
+.success-message {
+    background-color: #D5F5E3;
+    padding: 1rem;
+    border-radius: 5px;
+    border-left: 4px solid #2ECC71;
+    margin: 1rem 0;
+}
+
+/* Error messages */
+.error-message {
+    background-color: #FADBD8;
+    padding: 1rem;
+    border-radius: 5px;
+    border-left: 4px solid #E74C3C;
+    margin: 1rem 0;
+}
+
+/* Info messages */
+.info-message {
+    background-color: #D6EAF8;
+    padding: 1rem;
+    border-radius: 5px;
+    border-left: 4px solid #3498DB;
+    margin: 1rem 0;
+}
+
+/* Tabs styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 1rem;
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 3rem;
+    white-space: pre-wrap;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Footer styling */
+footer {
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+/* Tooltip styling */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    .stForm {
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,43 @@
+# Core requirements
+crawl4ai>=0.5.0
+streamlit>=1.24.0
+playwright>=1.39.0
+python-dotenv>=1.0.0
+pydantic>=2.4.0
+aiofiles>=23.2.1
+nltk>=3.8.1
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Vector database & embeddings
+sentence-transformers>=2.2.2
+chromadb>=0.4.13
+
+# For SharePoint/Active Directory integration
+Office365-REST-Python-Client>=2.5.0
+msal>=1.23.0
+
+# Ollama integration
+ollama>=0.1.5
+
+# HTTP and async utilities
+aiohttp>=3.8.5
+httpx>=0.24.1
+asyncio>=3.4.3
+
+# UI enhancements
+streamlit-extras>=0.3.0
+streamlit-chat>=0.1.1
+
+# Image processing
+Pillow>=10.0.0
+
+# JSON processing
+ujson>=5.8.0
+
+# For markdown processing
+markdown>=3.4.0
+markdownify>=0.11.0
+
+# Logging and monitoring
+loguru>=0.7.0

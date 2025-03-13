@@ -1,0 +1,22 @@
+AI-Web-Crawler/
+├── app/
+│   ├── __init__.py
+│   ├── main.py                   # Main Streamlit application entry point
+│   ├── crawler.py                # Web crawling functionality
+│   ├── processor.py              # Content processing and filtering
+│   ├── storage.py                # Knowledge base and vector storage
+│   ├── ollama_integration.py     # Integration with Ollama for Q&A
+│   ├── utils.py                  # Utility functions
+│   └── config.py                 # Configuration settings
+├── data/
+│   ├── crawled/                  # Raw crawled data
+│   └── knowledge_base/           # Processed knowledge base data
+├── static/
+│   └── css/                      # CSS for Streamlit customization
+│   └── img/                      # Images including logo placeholder
+├── Dockerfile                    # Docker configuration
+├── docker-compose.yml            # Docker Compose configuration
+├── requirements.txt              # Python dependencies
+├── setup.py                      # Package setup
+├── .env.example                  # Example environment variables
+└── README.md                     # Documentation
