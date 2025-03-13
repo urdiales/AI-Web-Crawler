@@ -1,0 +1,130 @@
+# Knowledge Crawler Application Architecture
+
+## Overview
+The Knowledge Crawler is a comprehensive web crawling and RAG (Retrieval-Augmented Generation) application that can systematically explore documentation websites, extract meaningful content, and provide an AI-powered conversational interface to query the knowledge.
+
+## Core Components
+
+### 1. Web Crawling Engine
+- **Deep Crawling Module**: Uses Crawl4AI's BFS strategy to systematically explore all pages
+- **Content Filtering Module**: Focuses on meaningful text, removes navigation/boilerplate
+- **SharePoint Connector**: Specialized module for crawling SharePoint sites and lists
+- **Image Handler**: Manages image downloading and storage
+
+### 2. Data Processing Pipeline
+- **Content Processor**: Cleans and standardizes HTML content
+- **Markdown Generator**: Converts web content to clean Markdown format
+- **JSON Generator**: Creates structured JSON from crawled content
+- **Chunking Engine**: Splits content into optimal chunks for embedding
+
+### 3. Vector Database
+- **Embeddings Generator**: Creates vector embeddings of content chunks
+- **Vector Store**: Stores embeddings for efficient retrieval
+- **Metadata Manager**: Manages additional content metadata
+
+### 4. RAG Interface
+- **Ollama Connector**: Integrates with local or remote Ollama models
+- **Query Processor**: Processes user questions
+- **Retrieval Engine**: Finds relevant content chunks
+- **Response Generator**: Generates AI responses based on retrieved content
+
+### 5. User Interface
+- **Streamlit Dashboard**: Professional user interface with easy navigation
+- **Crawl Configuration**: UI for setting crawl parameters
+- **Chat Interface**: Interface for interacting with the knowledge base
+- **Export Tools**: Functions for exporting data as JSON or Markdown
+
+### 6. Deployment Components
+- **Docker Configuration**: Easy containerization
+- **Orchestration Support**: Docker Compose setup
+- **Environment Management**: Handling of environment variables and secrets
+
+## Application Flow
+
+1. **Crawling Phase**:
+   - User enters URL and optional keywords
+   - App crawls the site using BFS strategy
+   - Content is filtered and processed
+   - Images are downloaded if specified
+
+2. **Processing Phase**:
+   - HTML is cleaned and standardized
+   - Content is converted to Markdown
+   - JSON structure is created
+   - Content is chunked and embedded
+
+3. **Storage Phase**:
+   - Vectors are stored in vector database
+   - Markdown files are saved to disk
+   - JSON files are made available for download
+
+4. **Query Phase**:
+   - User asks questions through chat interface
+   - System retrieves relevant chunks
+   - Ollama generates contextualized responses
+
+## File Structure
+
+```
+knowledge-crawler/
+├── app/
+│   ├── main.py                   # Main application entry point
+│   ├── crawler/                  # Crawling modules
+│   │   ├── crawl_manager.py      # Manages crawl operations
+│   │   ├── deep_crawler.py       # BFS deep crawling implementation
+│   │   ├── sharepoint_crawler.py # SharePoint specific crawler
+│   │   └── image_handler.py      # Image downloading and processing
+│   ├── processors/               # Content processing modules
+│   │   ├── content_processor.py  # HTML cleaning and processing
+│   │   ├── markdown_generator.py # Markdown conversion
+│   │   ├── json_generator.py     # JSON structure generation
+│   │   └── chunking.py           # Content chunking
+│   ├── database/                 # Database modules
+│   │   ├── vector_store.py       # Vector database operations
+│   │   ├── embeddings.py         # Embedding generation
+│   │   └── metadata.py           # Metadata management
+│   ├── rag/                      # RAG components
+│   │   ├── ollama_connector.py   # Ollama integration
+│   │   ├── query_processor.py    # Query processing
+│   │   └── retrieval_engine.py   # Content retrieval
+│   ├── ui/                       # UI components
+│   │   ├── dashboard.py          # Main dashboard
+│   │   ├── crawl_ui.py           # Crawl configuration UI
+│   │   ├── chat_ui.py            # Chat interface
+│   │   └── export_ui.py          # Export functionality UI
+│   └── utils/                    # Utility modules
+│       ├── error_handler.py      # Error handling
+│       ├── logger.py             # Logging functionality
+│       └── file_manager.py       # File operations
+├── data/                         # Data storage
+│   ├── markdown/                 # Markdown output
+│   ├── json/                     # JSON output
+│   ├── images/                   # Downloaded images
+│   └── vector_db/                # Vector database files
+├── docker/                       # Docker configurations
+│   ├── Dockerfile                # Main Dockerfile
+│   └── docker-compose.yml        # Docker Compose configuration
+├── .env.example                  # Example environment variables
+├── requirements.txt              # Python dependencies
+└── README.md                     # Project documentation
+```
+
+## Error Handling Strategy
+
+The application implements comprehensive error handling for:
+- Network failures during crawling
+- API rate limits
+- Database connection issues
+- Embedding generation errors
+- Invalid URLs or content
+
+Each module includes specific error handling appropriate to its function, with a centralized error handling service for consistent logging and user feedback.
+
+## Deployment Process
+
+The application is designed for easy deployment with minimal technical knowledge:
+1. Clone the repository
+2. Run the Docker Compose command
+3. Access the application through the web browser
+
+Additional deployment options include Portainer and Dockege integration for simplified management.

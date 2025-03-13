@@ -1,0 +1,85 @@
+# Knowledge Crawler: AI-Powered Web Knowledge Base Builder
+
+## Overview
+
+Knowledge Crawler is a sophisticated application that transforms web content into structured knowledge for AI-powered retrieval and conversation. It combines advanced web crawling techniques with local Large Language Models (LLMs) to create a powerful knowledge management system that helps users extract, organize, and interact with web-based information.
+
+## Core Components
+
+### 1. Advanced Web Crawler with Filtering
+
+The application uses Crawl4AI to intelligently navigate through websites, exploring content with a breadth-first search approach that ensures comprehensive coverage. The crawler can:
+
+- Navigate to a configurable depth within websites
+- Focus on specific keywords or content types
+- Filter out navigation elements, social media links, and other non-essential content
+- Process SharePoint sites with authentication
+- Handle modern web features like lazy-loaded images and infinite scroll
+
+### 2. Structured Knowledge Processing
+
+After crawling, web content undergoes sophisticated processing:
+
+- HTML is cleaned and converted to structured Markdown
+- Content is intelligently filtered to focus on meaningful text
+- Images are downloaded and processed
+- Text is organized into logical sections
+- JSON structure is created for semantic representation
+- Vector embeddings are generated for semantic search capabilities
+
+### 3. RAG (Retrieval-Augmented Generation) System
+
+The application includes a full RAG implementation:
+
+- Local embedding model for vector creation
+- FAISS vector database for efficient similarity search
+- Integration with Ollama for local language model inference
+- Context retrieval system that pulls relevant information for queries
+- Streaming response generation
+
+### 4. User-Friendly Interface
+
+A clean, professional Streamlit interface makes the application accessible:
+
+- Web crawler configuration with advanced options
+- Knowledge chat interface for interacting with crawled content
+- Customizable with company logo
+- Export options for JSON and Markdown
+- Recent crawls management
+
+### 5. Containerized Deployment
+
+The entire system is containerized for easy deployment:
+
+- Docker and Docker Compose configuration
+- Integration with Ollama for local LLM hosting
+- Optional GPU acceleration
+- Simple 3-step deployment process
+
+## Technical Highlights
+
+1. **Modular Architecture**: The application is built with clear separation of concerns, making it maintainable and extensible.
+
+2. **Asynchronous Processing**: Uses asyncio for efficient concurrent operations during crawling and processing.
+
+3. **Robust Error Handling**: Comprehensive error handling for network issues, rate limits, authentication problems, and more.
+
+4. **Intelligent Content Selection**: Advanced algorithms to identify and extract meaningful content while removing boilerplate.
+
+5. **Local AI Processing**: Fully functional with local models, no cloud API dependencies required.
+
+## Use Cases
+
+1. **Documentation Knowledge Base**: Create searchable knowledge bases from documentation websites.
+
+2. **SharePoint Content Extraction**: Extract and organize content from corporate SharePoint sites.
+
+3. **Research Aggregation**: Collect and analyze content from multiple research sources.
+
+4. **Website Data Analysis**: Extract structured data from websites for analysis.
+
+5. **Local RAG System**: Create a privacy-focused, offline-capable retrieval system for specific domains.
+
+## Summary
+
+Knowledge Crawler represents a complete end-to-end solution for transforming web content into structured, queryable knowledge. It combines the best of web crawling technology with modern AI techniques, all in a user-friendly package that can be deployed with minimal technical expertise.
